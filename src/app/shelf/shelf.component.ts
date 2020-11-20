@@ -18,23 +18,8 @@ export class ShelfComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
-    this.dragElement(document.getElementsByTagName("img"));
-
-    this.dragElement(document.getElementById("chumbaImg"));
-    this.dragElement(document.getElementById("dkcImg"));
-    this.dragElement(document.getElementById("gbImg"));
-    this.dragElement(document.getElementById("pikaImg"));
-    this.dragElement(document.getElementById("pogImg"));
-    this.dragElement(document.getElementById("smithersImg"));
-
-
-    document.querySelector<HTMLElement>("#chumbaImg").style.display = "none";
-    document.querySelector<HTMLElement>("#dkcImg").style.display = "none";
-    document.querySelector<HTMLElement>("#gbImg").style.display = "none";
-    document.querySelector<HTMLElement>("#pikaImg").style.display = "none";
-    document.querySelector<HTMLElement>("#pogImg").style.display = "none";
-    document.querySelector<HTMLElement>("#smithersImg").style.display = "none";
+    this.setUpDrag();
+    this.hideOnInit();
   }
 
   onSelectFile(event) {
@@ -56,6 +41,27 @@ export class ShelfComponent implements OnInit {
      
     }
   }
+
+  setUpDrag() {
+    this.dragElement(document.getElementsByTagName("img"));
+
+    this.dragElement(document.getElementById("chumbaImg"));
+    this.dragElement(document.getElementById("dkcImg"));
+    this.dragElement(document.getElementById("gbImg"));
+    this.dragElement(document.getElementById("pikaImg"));
+    this.dragElement(document.getElementById("pogImg"));
+    this.dragElement(document.getElementById("smithersImg"));
+  }
+
+  hideOnInit() {
+    document.querySelector<HTMLElement>("#chumbaImg").style.display = "none";
+    document.querySelector<HTMLElement>("#dkcImg").style.display = "none";
+    document.querySelector<HTMLElement>("#gbImg").style.display = "none";
+    document.querySelector<HTMLElement>("#pikaImg").style.display = "none";
+    document.querySelector<HTMLElement>("#pogImg").style.display = "none";
+    document.querySelector<HTMLElement>("#smithersImg").style.display = "none";
+  }
+
 
   styleImages() {
      
