@@ -1,0 +1,130 @@
+#wrapper {
+    height: 100vh;
+    margin: 0;
+
+}
+
+
+#mydiv {
+    position: absolute;
+    z-index: 1;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+  }
+
+  #mydivheader {
+    padding: 10px;
+    cursor: move;
+    z-index: 1;
+    background-color: #2196F3;
+    color: #fff;
+  }
+
+#imgDiv {
+    position: absolute;
+}
+
+#hidePanel {
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+#form {
+    width: 325px;
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0;
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#placeHolder {
+    height: 199.5px;
+    width: 350px;  
+}
+
+#controlPanel {
+    width: 328px;
+    padding: 10px;
+    margin-left: 15px;
+    border: 1px solid black;
+    background-color: white;
+    
+}
+
+.subPanel {
+    
+    border: 1px solid black;
+}
+
+span {
+    margin-left: 5px;
+}
+
+#imgToggleButts {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#wallColor {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+
+#chumbaImg {
+    
+    position: absolute;
+    cursor: move;
+    z-index: 7;
+}
+
+#dkcImg {
+    
+    position: absolute;
+    cursor: move;
+    z-index: 7;
+}
+
+#gbImg {
+    
+    position: absolute;
+    cursor: move;
+    z-index: 7;
+}
+
+#pikaImg {
+    
+    position: absolute;
+    cursor: move;
+    z-index: 7;
+}
+
+#pogImg {
+    
+    position: absolute;
+    cursor: move;
+    z-index: 7;
+}
+
+#smithersImg {
+    
+    position: absolute;
+    cursor: move;
+    z-index: 7;
+}
+
+#shelfOuter {
+    display: flex;
+    justify-content: center;
+    
+    margin-top: 15%;
+}
+
+#shelf {
+    z-index: 1;
+    max-width: 100%;
+}
+

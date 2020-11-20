@@ -1,0 +1,76 @@
+ <!-- Draggable DIV -->
+<div id="wrapper">
+
+  <!-- <div id="mydiv">
+     
+    <div id="mydivheader">Click here to move</div>
+    <p>Move</p>
+    <p>this</p>
+    <p>DIV</p>
+  </div>  -->
+<br>
+<button id="hidePanel" (click)="toggleControls()">hide controls</button>
+
+  <div id="placeHolder">
+  <div id="controlPanel">
+  
+    <form id="form">
+    
+      <label for="myfile">Select a file:</label>
+      <input type="file" id="myfile" name="myfile" accept=".png,.jpg,.gif" (change)="onSelectFile($event)">
+    </form> 
+      <div class="subPanel">
+        <span>
+          toggle images on/off:
+        </span>
+        <br>
+        <hr>
+        <div id="imgToggleButts">
+          <button id="chumbaButton" class="toggleButt" (click)='toggleImg("#chumbaImg")'>Chumbawamba</button>
+          <button id="dkcButton" class="toggleButt" (click)='toggleImg("#dkcImg")'>DK Country</button>
+          <button id="gbButton" class="toggleButt" (click)='toggleImg("#gbImg")'>GameBoy</button>
+          <button id="pikaButton" class="toggleButt" (click)='toggleImg("#pikaImg")'>Pika</button>
+          <button id="pogsButton" class="toggleButt" (click)='toggleImg("#pogImg")'>POGS</button>
+          <button id="smithersButton" class="toggleButt" (click)='toggleImg("#smithersImg")'>Smithers</button>
+        </div>
+    </div>
+    <br>
+    <div class="subPanel">
+      <label for="wallColor"><span>paint the wall:</span></label>
+      <hr>
+        <input type="color" id="wallColor" [value]="colorValue" (change)="paintWall()">
+    </div>
+  </div>
+  </div>
+
+
+<br>
+<!-- <div id="imgDiv">
+<img [src]="url" id="dragImg" height="200" height="200 ">
+</div> -->
+
+<div id="imgOutter">
+
+<img src="../../assets/chumba_300px.png" class="dragImg" height="300" width="204" id="chumbaImg">
+
+<img src="../../assets/dkc_300px.png" class="dragImg" height="184" width="300" id="dkcImg">
+
+<img src="../../assets/gb_400px.png" class="dragImg" height="400" width="278" id="gbImg">
+
+<img src="../../assets/pika_450px.png" class="dragImg" height="450" width="409" id="pikaImg">
+
+<img src="../../assets/pogs_200px.png" class="dragImg" height="236" width="200" id="pogImg">
+
+<img src="../../assets/smithers_400px.png" class="dragImg" height="400" width="209" id="smithersImg">
+
+</div>
+
+<div id="parentForImg"></div>
+
+
+<div id="shelfOuter">
+<img src="../../assets/shelf_1700px.png" alt="shelf" id="shelf" height="205" width="1361">
+</div>
+
+
+</div>
