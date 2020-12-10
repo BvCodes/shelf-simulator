@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Button } from 'protractor';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-shelf',
@@ -15,26 +16,21 @@ export class ShelfComponent implements OnInit {
 
   colorValue:any;
 
-  constructor() { }
+  message: string = "Screan grab your shelf and tag or DM @shelf_dujour on Insta. We will choose a favorite shelf everyday. Good Luck."
+  action: string = "close"
+  
+
+  customPhotoCount:number = 0; 
+
+  imgsInSelect = [];
+
+
+  constructor(private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-
-    this.dragElement(document.getElementsByTagName("img"));
-
-    this.dragElement(document.getElementById("chumbaImg"));
-    this.dragElement(document.getElementById("dkcImg"));
-    this.dragElement(document.getElementById("gbImg"));
-    this.dragElement(document.getElementById("pikaImg"));
-    this.dragElement(document.getElementById("pogImg"));
-    this.dragElement(document.getElementById("smithersImg"));
-
-
-    document.querySelector<HTMLElement>("#chumbaImg").style.display = "none";
-    document.querySelector<HTMLElement>("#dkcImg").style.display = "none";
-    document.querySelector<HTMLElement>("#gbImg").style.display = "none";
-    document.querySelector<HTMLElement>("#pikaImg").style.display = "none";
-    document.querySelector<HTMLElement>("#pogImg").style.display = "none";
-    document.querySelector<HTMLElement>("#smithersImg").style.display = "none";
+    this.setUpDrag();
+    this.hideOnInit();
+    this.initMessage(this.message, this.action);
   }
 
   onSelectFile(event) {
@@ -48,6 +44,8 @@ export class ShelfComponent implements OnInit {
         var img = document.createElement("IMG");
         img.setAttribute("src", this.url);
         img.setAttribute("class", "dragImg");
+        img.setAttribute("id", this.customPhotoCount.toString());
+        this.addImgtoSelect();
         parent.appendChild(img);
         this.styleImages();
         this.dragElemLoop();
@@ -56,6 +54,122 @@ export class ShelfComponent implements OnInit {
      
     }
   }
+
+
+  addImgtoSelect() {
+    var select = document.getElementById("imgSelect");
+    var option = document.createElement("option");
+    option.text = "img " + this.customPhotoCount.toString();
+    option.value = this.customPhotoCount.toString();
+    select.appendChild(option);
+    this.customPhotoCount += 1;
+  }
+
+  removeImgCheckForNone() {
+    if (document.querySelector<HTMLInputElement>("#imgSelect").value != "none") {
+      this.removeFromSelect(this.removeImg());
+    } else {
+      console.log("none was selected");
+    }
+  }
+
+  removeImg() {
+    var selectValue = document.querySelector<HTMLInputElement>("#imgSelect").value;
+    //console.log(selectValue)
+    var imgToRemove = document.getElementById(selectValue);
+    //console.log(imgToRemove)
+    //var numberToReturn: number = parseInt(selectValue);
+    var numberToReturn= selectValue;
+    //console.log(numberToReturn)
+    imgToRemove.remove();
+    
+    return selectValue;
+
+  }
+
+  
+  removeFromSelect(selectValue) {
+    var imgSelect = document.querySelector<HTMLSelectElement>("#imgSelect");
+    var i;
+    for (i = 0; i < imgSelect.options.length; i++) {
+      if (imgSelect.options[i].value == selectValue) {
+        imgSelect.options[i] = null;
+      }
+    } 
+  }
+
+  highlightSelectedImg2() {
+    //if (document.querySelector<HTMLInputElement>("#imgSelect").value == "none") {
+    var selectValue = document.querySelector<HTMLInputElement>("#imgSelect").value;
+    var imgToHighlight = document.getElementById(selectValue);
+    var dragImgCollection = document.querySelectorAll<HTMLElement>(".dragImg");
+    var i;
+    if (document.querySelector<HTMLInputElement>("#imgSelect").value == "none") {
+      for (i = 0; i < dragImgCollection.length; i++) {
+        dragImgCollection[i].style.border = "none"
+      }
+  } else {
+    for (i = 0; i < dragImgCollection.length; i++) {
+      if (dragImgCollection[i].style.border != "none") {
+        dragImgCollection[i].style.border = "none"
+      }
+    }
+    imgToHighlight.style.border = "5px solid red";
+    //document.getElementById
+  }
+  }
+
+
+  selectedImg() {
+    var selectValue = document.querySelector<HTMLInputElement>("#imgSelect").value;
+    var selectedImg = document.querySelector<HTMLElement>("#\\3" + selectValue);
+    return selectedImg;
+  }
+
+  rotateCheckForNone() {
+    if (document.querySelector<HTMLInputElement>("#imgSelect").value != "none") {
+      this.rotateImg(this.selectedImg());
+    } else {
+      console.log("none selected")
+    }
+  }
+  
+
+  rotateImg(img) {
+    var degrees = document.querySelector<HTMLInputElement>("#rotateImgSelect").value;
+    var selectedImg = img;
+    selectedImg.style.transform = "rotate(" + degrees + "deg)";
+  }
+
+
+
+  initMessage(message, action) {
+    this._snackBar.open(message, action, {
+      duration: 10000,
+      verticalPosition: "top",
+    });
+  }
+
+  setUpDrag() {
+    this.dragElement(document.getElementsByTagName("img"));
+
+    this.dragElement(document.getElementById("chumbaImg"));
+    this.dragElement(document.getElementById("dkcImg"));
+    this.dragElement(document.getElementById("gbImg"));
+    this.dragElement(document.getElementById("pikaImg"));
+    this.dragElement(document.getElementById("pogImg"));
+    this.dragElement(document.getElementById("smithersImg"));
+  }
+
+  hideOnInit() {
+    document.querySelector<HTMLElement>("#chumbaImg").style.display = "none";
+    document.querySelector<HTMLElement>("#dkcImg").style.display = "none";
+    document.querySelector<HTMLElement>("#gbImg").style.display = "none";
+    document.querySelector<HTMLElement>("#pikaImg").style.display = "none";
+    document.querySelector<HTMLElement>("#pogImg").style.display = "none";
+    document.querySelector<HTMLElement>("#smithersImg").style.display = "none";
+  }
+
 
   styleImages() {
      
@@ -186,17 +300,6 @@ export class ShelfComponent implements OnInit {
   }
 
 
-  toggleRom() {
-    const rom = document.querySelector<HTMLElement>("#romImg");
-    
-    if (rom.style.display == "none") {
-      rom.style.display = "block";
-    } else {
-      rom.style.display = "none";
-    }
-    
-  }
-
   toggleImg(id) {
     const img = document.querySelector<HTMLElement>(id);
     
@@ -206,6 +309,9 @@ export class ShelfComponent implements OnInit {
       img.style.display = "none";
     }
   }
+
+
+
 
   toggleControls() {
     const contr = document.querySelector<HTMLElement>("#controlPanel");

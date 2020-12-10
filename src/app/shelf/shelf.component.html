@@ -1,24 +1,41 @@
- <!-- Draggable DIV -->
+
 <div id="wrapper">
 
-  <!-- <div id="mydiv">
-     
-    <div id="mydivheader">Click here to move</div>
-    <p>Move</p>
-    <p>this</p>
-    <p>DIV</p>
-  </div>  -->
+
 <br>
 <button id="hidePanel" (click)="toggleControls()">hide controls</button>
+<h1>Sorry, Shelf Simulator '99 is not touch screen compatible yet.<br>
+    Please check out on laptop/desktop.</h1>
 
   <div id="placeHolder">
   <div id="controlPanel">
   
     <form id="form">
     
-      <label for="myfile">Select a file:</label>
+      <label for="myfile">add an img: </label>
       <input type="file" id="myfile" name="myfile" accept=".png,.jpg,.gif" (change)="onSelectFile($event)">
-    </form> 
+    </form>
+    <div id="selectDiv">
+      <div id="selectInner">
+        <label for="imgSelect">select a user image: </label> 
+        <select name="imgSelect" id="imgSelect" (change)="highlightSelectedImg2()">
+          <option value="none">none</option>
+        </select>
+        <hr>
+        <div id="actions">
+          <button id="removeImg" (click)="removeImgCheckForNone()">remove</button>
+          <hr>
+          <label for="rotateImgSelect">rotate selected img: </label>
+          <select name="rotateImgSelect" id="rotateImgSelect" (change)="rotateCheckForNone()">
+            <option value="0">0°</option>
+            <option value="90">90°</option>
+            <option value="180">180°</option>
+            <option value="270">270°</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <br>
       <div class="subPanel">
         <span>
           toggle images on/off:
@@ -45,9 +62,7 @@
 
 
 <br>
-<!-- <div id="imgDiv">
-<img [src]="url" id="dragImg" height="200" height="200 ">
-</div> -->
+
 
 <div id="imgOutter">
 
