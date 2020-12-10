@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Overview
 
+https://shelfsimulator.com
+
 Shelf Simulator '99 is a simple, light-hearted app that allows users to place objects on a shelf.
 I wanted to make something that would allow me to practice JS DOM manipulation, while also reminiscant 
 of the internet of yesteryear. It is purposfully minimally styled to look like a website from the '90s.
