@@ -1,7 +1,13 @@
+
+
 #wrapper {
     height: 100vh;
     margin: 0;
 
+}
+
+h1 {
+    display: none;
 }
 
 
@@ -28,6 +34,14 @@
 #hidePanel {
     margin-left: 15px;
     margin-bottom: 15px;
+}
+
+#selectDiv {
+    border: 1px solid black;
+}
+
+#selectInner {
+    margin: 5px;
 }
 
 #form {
@@ -128,3 +142,20 @@ span {
     max-width: 100%;
 }
 
+@media only screen and (max-width: 1200px) {
+
+    h1 {
+        display: block;
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    #hidePanel {
+        display: none;
+    }
+
+    #controlPanel {
+        display: none;
+    }
+
+}

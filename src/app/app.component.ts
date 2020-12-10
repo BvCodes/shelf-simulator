@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,6 +10,10 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class AppComponent {
   title = 'shelf-sim';
+
+  
+
+
 
   @ViewChild(MatSidenav) sidenav: MatSidenav;
   events: string[] = [];
